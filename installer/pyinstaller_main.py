@@ -1,3 +1,4 @@
+# https://pyinstaller.org/en/stable/usage.html#shortening-the-command
 
 import PyInstaller.__main__
 import os
@@ -11,7 +12,8 @@ if __name__ == "__main__":
     PyInstaller.__main__.run([
     main_fn,
     '--onefile',
-    '--windowed',
+    '--add-data=data.json;.',
+    # '--windowed',
     '--icon=installer\\icon.ico',
     ])
 
