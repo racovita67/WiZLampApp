@@ -13,7 +13,7 @@ if __name__ == "__main__":
     main_fn,
     '--onefile',
     '--add-data=data.json;.',
-    # '--windowed',
+    '--windowed',
     '--icon=installer\\icon.ico',
     ])
 
