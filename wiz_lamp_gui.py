@@ -2,6 +2,7 @@ import customtkinter
 import tkinter
 import json
 from PIL import Image
+import os
 
 def map_valrange(x_val, x_range: tuple, y_range: tuple):
     """
@@ -68,7 +69,9 @@ class MainFrame(customtkinter.CTkFrame):
         self.slider_intensity.configure(button_color=wb_color, button_hover_color=wb_color, progress_color=wb_color)
 
     def cold_hot_event(self, value):
-        with open("data.json") as f:
+        script_dn = os.path.dirname(os.path.abspath(__file__))
+        json_fn = os.path.join(script_dn, "data.json")
+        with open(json_fn) as f:
             hot_map = json.load(f)["hot_cold_map"]
 
         hm_idx = int(map_valrange(value, (0, 100), (0, (len(hot_map) - 20))))

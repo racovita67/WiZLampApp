@@ -2,10 +2,14 @@ from wiz_lamp_gui import App_GUI
 from wiz_lamp_gui import map_valrange
 from lamp import WiZLampUDS
 import json
+import os
 
 class Controller:
+    script_dn = os.path.dirname(os.path.abspath(__file__))
+    json_fn = os.path.join(script_dn, "data.json")
     def __init__(self):
         # Controller Data
+
         self.lamp_on_off_flag = False
         self.lamp_intensity = 50
         self.lamp_hot_cold = 50
@@ -39,7 +43,7 @@ class Controller:
         self.model.send_uds_command({"dimming": int(self.lamp_intensity)})
 
     def btn_set_hot_cold(self):
-        with open("data.json") as f:
+        with open(self.json_fn) as f:
             hot_map = json.load(f)["hot_cold_map"]
 
         hm_idx = int(map_valrange(self.lamp_hot_cold, (0, 100), (0, (len(hot_map) - 40))))
