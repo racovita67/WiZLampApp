@@ -1,4 +1,4 @@
-# Control a single WiZ Lamp through UDS
+# Control a single WiZ Lamp through UDP
 Possible controls: On/Off, Brightness and color by temperature.
 
 Run installer_main.py in order to build the executable GUI or run main.py
