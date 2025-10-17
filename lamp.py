@@ -11,15 +11,18 @@ class WiZLampUDS():
         self.lamp_mac = "cc-40-85-78-e3-4a"
 
     def set_ip(self, lamp_ip: str):
+        """
+        :param lamp_ip: IP Address of the lamp
+        """
         self.lamp_ip = lamp_ip
 
     def set_mac(self, lamp_mac:str):
-        self.lamp_mac = lamp_mac.lower()
-
-    def set_ip_from_mac(self):
         """
         :param lamp_mac: MAC Address of the lamp, e.g. "cc-40-85-78-e3-4a"
         """
+        self.lamp_mac = lamp_mac.lower()
+
+    def set_ip_from_mac(self):
         search_ip = None
         # List all the ips in the local wireless network with "arp -a"
         result = subprocess.run(["arp", "-a"], capture_output=True, text=True)
